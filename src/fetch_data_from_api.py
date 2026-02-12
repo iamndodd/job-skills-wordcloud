@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 from config import *
 from dotenv import load_dotenv
-
+import streamlit as st
 
 # Parameters of API search
 def fetch_api_data(job_to_search, save_csv=False):
