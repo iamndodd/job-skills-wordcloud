@@ -10,7 +10,7 @@ def make_wordcloud_figure(string_data, word_limit=50):
         min_word_length= 4,
         max_words= word_limit,
         colormap="Blues",
-        font_path=r"C:\Windows\Fonts\segoeui.ttf",
+        #font_path=r"C:\Windows\Fonts\segoeui.ttf",
         collocations=False
     ).generate(string_data)
     plt.figure(figsize=(12, 8))
