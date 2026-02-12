@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 def fetch_api_data(job_to_search, save_csv=False):
     url = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
     load_dotenv()
-    app_id = os.getenv("app_id")
-    app_key =  os.getenv("app_key")
+    app_id = os.getenv("app_id") or st.secrets.get("app_id")
+    app_key =  os.getenv("app_key") or st.secrets.get("app_key")
 
     if not app_id or not app_key:
         raise ValueError("Missing API credentials. Check your .env file.")
