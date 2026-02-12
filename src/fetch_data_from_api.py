@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 # Parameters of API search
-def fetch_api_data(job_to_search):
+def fetch_api_data(job_to_search, save_csv=False):
     url = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
     load_dotenv()
     app_id = os.getenv("app_id")
@@ -28,4 +28,8 @@ def fetch_api_data(job_to_search):
 
     jobs = pd.DataFrame(data["results"])
     jobs = jobs.drop_duplicates(subset = "description", keep="last")
-    jobs.to_csv(DATA_ADZUNA_DIR/f"ADZUNA_{job_to_search}_raw.csv", index = False)
+
+    if save_csv:
+        jobs.to_csv(DATA_ADZUNA_DIR/f"ADZUNA_{job_to_search}_raw.csv", index = False)
+
+    return jobs

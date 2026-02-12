@@ -14,7 +14,7 @@ job_search_list = ["data scientist",
                    "junior"]
 
 for job in job_search_list:
-    fetch_api_data(job)
+    fetch_api_data(job, save_csv=True)
 
 # Job search results saved into CSV files
 csv_files = list(DATA_ADZUNA_DIR.glob("*.csv"))
