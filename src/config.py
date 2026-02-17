@@ -14,3 +14,4 @@ print(BASE_DIR)
 FIGURE_DIR = BASE_DIR / "figures"
 DATA_DIR = BASE_DIR / "data"
 DATA_ADZUNA_DIR = BASE_DIR / "data/ADZUNA_data"
+FONT_DIR = BASE_DIR / "fonts"

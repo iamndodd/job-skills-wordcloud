@@ -8,7 +8,7 @@ st.set_page_config(layout="centered")
 
 # Page titles and text
 st.title(":blue[ADZUNA API WORDCLOUD MAKER]")
-st.text("This project analyzes UK job descriptions using the free Adzuna API. It extracts job descriptions, processes text data, and generates a word cloud to visualize in-demand skills in the current job market.")
+st.text("This project analyses UK job descriptions using the free Adzuna API. It extracts job descriptions, processes text data, and generates a word cloud to visualize in-demand skills in the current job market.")
 st.text("This project intentionally combined independent development with AI-assisted troubleshooting and architectural guidance. While AI supported problem-solving and efficiency, the core codebase was written manually as a hands-on learning exercise. The objective was to demonstrate practical capability in consuming API data, processing and transforming it, and delivering meaningful analytical outputs.")
 
 # Area of page to enter input and make wordcloud
