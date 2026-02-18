@@ -6,7 +6,7 @@ my_name = "My Skills"
 
 # 1️⃣ Skill categories with default score
 skill_categories = {
-    "Being me": 10,
+    "Being me": 20,
     "Technical Skills": 1,
     "Analytical Skills": 3,
     "Communication Skills": 5,

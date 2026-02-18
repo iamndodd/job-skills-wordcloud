@@ -5,8 +5,7 @@ from my_skills import *
 # Make app full-width
 st.set_page_config(layout="centered")
 
-st.title("My Skills Wordcloud", text_alignment="center")
-#st.text("Using python dictionaries to create a wordcloud")
+st.title(":red"+"[Making a Skills Wordcloud]".upper(), text_alignment="center")
 
 lower = 1
 upper = 5
@@ -52,9 +51,8 @@ else:
     final_cats_score = {cat: score for cat, score in skill_categories.items() if not cat == "Joke Skills"}
     final_dict = {cat: skill_list for cat, skill_list in skills_dict.items() if not cat == "Joke Skills"}
     message_text = "Standard Version"
-    color = "gist_yarg"
+    color = "RdGy_r"
 
-st.text(message_text, width="stretch", text_alignment= "center")
 # Flatten the skills_dict with category scores
 weighted_skills_dict = {
     skill: final_cats_score[category]*20+np.random.randint(-12,41)  # score comes from parent category
@@ -62,15 +60,45 @@ weighted_skills_dict = {
     for skill in subskills
 }
 
+# generate wordcloud
 wordcloud = make_wordcloud_figure_dict(weighted_skills_dict, 125, color= color)
-
+st.subheader(f":red[{message_text.upper()}]", width="stretch", text_alignment= "center")
 # Create matplotlib figure
 fig, ax = plt.subplots(figsize=(8, 8))
 # plt.title("My Skills".title())
 ax.imshow(wordcloud, interpolation="bilinear")
 ax.axis("off")
-
 st.pyplot(fig)
 
+# split main area into 2 columns
+col1, col2 = st.columns(2)
+with col1:
+    st.text("""
+    This application generates a dynamic word cloud using structured Python dictionaries and a frequency-weighting algorithm. Each word in the visualization is mapped to a score, allowing the cloud to reflect relative importance through size scaling.
 
-st.text("App Created By Dr. Nathan Dodd 2026", width="stretch", text_alignment= "center")
+    The interface is fully interactive. Sliders allow users to adjust parameters such as word count limits and visual scaling, while checkboxes toggle specific transformation rules and weighting logic. Default parameter states are carefully defined so that each control can be safely turned on and off without breaking the rendering logic or introducing inconsistent states.
+
+    The word cloud shape is defined using a custom PNG mask (a cloud silhouette), which constrains the layout algorithm to render words within the specified figure boundary rather than a default rectangular canvas.
+    """, text_alignment="justify")
+
+# wordcloud figure in right col
+with col2:
+    st.text("""
+    This project demonstrates:
+    
+    - Structuring static data into reusable dictionaries.
+    
+    - Transforming hierarchical skill data into weighted frequencies.
+    
+    - Building reactive UI logic in Streamlit.
+    
+    - Managing stateful controls with predictable defaults.
+    
+    - Generating custom-shaped word clouds using image masks.
+    
+    - Connecting user inputs to real-time visual outputs.
+
+    Overall, the app showcases how backend data structures, transformation logic, and frontend controls can be integrated into a cohesive, interactive visualization tool.
+    """, width="stretch", text_alignment="left")
+
+st.text("App Created By Dr. Nathan Dodd 2026", width="stretch", text_alignment="center")
