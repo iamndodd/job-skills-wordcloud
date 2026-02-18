@@ -11,20 +11,26 @@ lower = 1
 upper = 5
 
 # sidebar
-st.sidebar.subheader("Score Your Skills")
+# st.sidebar.subheader("Score Your Skills")
 
-Technical_score = st.sidebar.slider("Technical Skills",lower,upper)
-Analytical_score = st.sidebar.slider("Analytical Skills",lower,upper)
-Communication_score = st.sidebar.slider("Communication Skills",lower,upper)
-Collaboration_score = st.sidebar.slider("Collaboration Skills",lower,upper)
-Leadership_score = st.sidebar.slider("Leadership Skills",lower,upper)
-Organise_score = st.sidebar.slider("Organisational Skills",lower,upper)
-Problem_Solving_score = st.sidebar.slider("Problem-Solving Skills",lower,upper)
-Adaptability_score = st.sidebar.slider("Adaptability Skills",lower,upper)
-Professionalism_score = st.sidebar.slider("Professionalism Skills",lower,upper)
-Business_score = st.sidebar.slider("Strategic & Business Skills",lower,upper)
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    Technical_score = st.slider("Technical",lower,upper)
+    Analytical_score = st.slider("Analytical",lower,upper)
+with col2:
+    Communication_score = st.slider("Communication",lower,upper)
+    Collaboration_score = st.slider("Collaboration",lower,upper)
+with col3:
+    Leadership_score = st.slider("Leadership",lower,upper)
+    Organise_score = st.slider("Organisational",lower,upper)
+with col4:
+    Problem_Solving_score = st.slider("Problem-Solving",lower,upper)
+    Adaptability_score = st.slider("Adaptability",lower,upper)
+with col5:
+    Professionalism_score = st.slider("Professionalism",lower,upper)
+    Business_score = st.slider("Strategic & Business",lower,upper)
+
 Joke_score = 10
-
 
 skill_categories = {
     "Being me": 10,
@@ -71,8 +77,8 @@ ax.axis("off")
 st.pyplot(fig)
 
 # split main area into 2 columns
-col1, col2 = st.columns(2)
-with col1:
+colA, colB = st.columns(2)
+with colA:
     st.text("""
     This application generates a dynamic word cloud using structured Python dictionaries and a frequency-weighting algorithm. Each word in the visualization is mapped to a score, allowing the cloud to reflect relative importance through size scaling.
 
@@ -82,7 +88,7 @@ with col1:
     """, text_alignment="justify")
 
 # wordcloud figure in right col
-with col2:
+with colB:
     st.text("""
     This project demonstrates:
     
