@@ -1,6 +1,8 @@
 import streamlit as st
 from build_wordcloud_style import make_wordcloud_figure_dict
 from my_skills import *
+import enchant
+d = enchant.Dict("en_US")
 
 # Make app full-width
 st.set_page_config(layout="centered")
@@ -47,7 +49,22 @@ skill_categories = {
     "Joke Skills": Joke_score
 }
 
-st.sidebar.text("Alternate Reality?")
+# add terms to joke skills list
+new_skill = st.sidebar.text_input("Want to add a terrible talent to the list of bad skills?", "")
+new_skill = new_skill.upper()
+avoid_terms = "cock, nan, pussy, cunt, fuck, shit, bastard, twat, reece, elliot, elliott, phil, jamie, nathan, dodd, shitty, penis".upper()
+if new_skill != "" and new_skill not in joke_skills and new_skill not in avoid_terms:
+    if d.check(new_skill) == True:
+        st.sidebar.info("Accepted")
+        joke_skills.append(new_skill)
+    elif d.check(new_skill) == False:
+        st.sidebar.info("Check Spelling")
+elif new_skill == "cunt".upper():
+    st.sidebar.error("That is very offensive! I have reported this to the authorities in your local area of [Yorkshire]".upper())
+elif new_skill in avoid_terms:
+    st.sidebar.error("Rejected!")
+
+st.sidebar.text("Turn on Alternate Reality?")
 if st.sidebar.checkbox("Bad Skills") == True:
     final_cats_score = skill_categories
     final_dict = skills_dict
