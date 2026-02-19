@@ -12,7 +12,7 @@ upper = 5
 
 # sidebar
 # st.sidebar.subheader("Score Your Skills")
-
+st.text("Create a wordcloud based on the types of skills and personality you have. sliders score skills from 1-5.")
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     Technical_score = st.slider("Technical",lower,upper)
@@ -33,7 +33,7 @@ with col5:
 Joke_score = 10
 
 skill_categories = {
-    "Being me": 10,
+    "Being me": 15,
     "Technical Skills": Technical_score,
     "Analytical Skills": Analytical_score,
     "Communication Skills": Communication_score,
