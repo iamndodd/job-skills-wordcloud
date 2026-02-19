@@ -37,20 +37,21 @@ clean_text = re.sub(r"[^a-zA-Z\s]", "", all_text.title())
 try:
     wordcloud = make_wordcloud_figure(clean_text, 150)
 
-except ValueError:
+    fig, ax = plt.subplots()
+    plt.title(search_term.title())
+    ax.imshow(wordcloud, interpolation="bilinear")
+    ax.axis("off")
+    st.pyplot(fig)
+
+except Exception:
     st.error(f"No figure available for '{search_term}'.")
     st.stop()
 
-except Exception:
-    st.error("Unexpected error while generating figure.")
-    st.stop()
 
-# Create matplotlib figure
-fig, ax = plt.subplots(figsize=(10, 10))
-plt.title(search_term.title())
-ax.imshow(wordcloud, interpolation="bilinear")
-ax.axis("off")
-st.pyplot(fig)
+
+
+
+
 
 # page tail
 st.text(f"This search returned {results_length} results from the ADZUNA API.", width="stretch", text_alignment= "center")
