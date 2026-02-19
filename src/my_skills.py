@@ -150,17 +150,9 @@ strategic_business_skills = [
 
 joke_skills = [
     "Intolerant",
-    "Rejected",
-    "Depressed",
     "Abusive",
-    "Arsonist",
-    "Death Row",
-    "Kinky",
-    "Influencer",
-    "Giggity",
-    "Dancing",
+    "Twisted fire starter",
     "Back Flip",
-    "Abusive",
     "Cowboy",
     "Easily Distr...",
     "Inept",
